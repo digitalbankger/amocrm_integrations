@@ -28,7 +28,9 @@ export default {
         console.log("Отправляю запрос на получение сделок...");
         const response = await fetchDeals();
         console.log("Ответ от API:", response);
-        deals.value = response.data;
+        
+        deals.value = response._embedded.leads;
+        
       } catch (error) {
         console.error('Ошибка загрузки сделок:', error);
       }
