@@ -7,7 +7,7 @@ const tokenService = {
 
   
     async fetchAccessToken() {
-      const response = await fetch('https://bkmzenbkmzen.amocrm.ru/oauth2/access_token', {
+      const response = await fetch('https://cors-anywhere.herokuapp.com/https://bkmzenbkmzen.amocrm.ru/oauth2/access_token', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
