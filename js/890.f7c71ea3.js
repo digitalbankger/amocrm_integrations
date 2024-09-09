@@ -1,2 +1,2 @@
 "use strict";(self["webpackChunkmy_vue_app"]=self["webpackChunkmy_vue_app"]||[]).push([[890],{6890:function(e,n,t){t.r(n),t.d(n,{default:function(){return p}});var c=t(3396);const s={class:"d-flex fd-column ai-center jc-center p-1 p-relative"},r=(0,c._)("div",{class:"container d-flex fd-column p-1 pm-0"},[(0,c._)("div",{class:"d-flex fd-column jc-center text-center z-index-1 width-100"},[(0,c._)("h2",{class:"display-1 sec-head m-tb-2 pb-sm-3 text-light"},"Риск менеджер")])],-1),a=[r];function u(e,n,t,r,u,l){return(0,c.wg)(),(0,c.iD)("section",s,a)}var l={components:{},setup(){return{}}},d=t(89);const i=(0,d.Z)(l,[["render",u]]);var p=i}}]);
-//# sourceMappingURL=890.82ec151b.js.map
+//# sourceMappingURL=890.f7c71ea3.js.map
