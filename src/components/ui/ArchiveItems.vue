@@ -16,24 +16,28 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, nextTick } from 'vue';
 import { useApi } from '@/services/api/api.js'; 
+
 export default {
   setup() {
     const deals = ref([]);
-    const { fetchDeals } = useApi();
 
     const fetchItems = async () => {
       try {
         console.log("Отправляю запрос на получение сделок...");
-        const response = await fetchDeals();
-        console.log("Ответ от API:", response);
+        const response = await useApi().fetchDeals();
+
+        console.log("Полный ответ от API:", response);
 
         if (response && response._embedded && response._embedded.leads) {
-          deals.value = response._embedded.leads;  
+          deals.value = response._embedded.leads; 
           console.log("Сделки после присваивания:", deals.value);
+
+          await nextTick(); 
+          console.log("Компонент обновлен после nextTick.");
         } else {
-          console.error("Сделки не найдены в ответе API");
+          console.error("Сделки не найдены в ответе API или структура ответа изменилась.");
         }
       } catch (error) {
         console.error('Ошибка загрузки сделок:', error);
