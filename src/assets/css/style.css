@@ -1191,7 +1191,7 @@ tr:nth-child(even) {
     margin-top: 120px;
   }
   .general {
-    height: 700px;
+    height: 100vh;
   }
   .m-text-left {
     text-align: left;
