@@ -1,7 +1,5 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
-  transpileDependencies: true
+  transpileDependencies: true,
+  publicPath: '/amocrm_integrations/'
 })
-export default {
-  base: '/amocrm_integrations/', 
-};
