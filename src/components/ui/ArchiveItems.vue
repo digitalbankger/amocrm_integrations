@@ -3,7 +3,7 @@
     <h1 class="m-b-2">Сделки компании</h1>
 
     <div class="ads-list">
-      <div v-if="deals.length === 0">Нет доступных сделок</div>
+      <div v-if="deals.length === 0">Нет доступных сделок</div> <!-- Сообщение, если сделок нет -->
       <div v-for="deal in deals" :key="deal.id" class="ad-item">
         <img :src="'https://via.placeholder.com/150'" alt="Фото сделки" class="ad-photo" />
         <div class="ad-details">
@@ -26,8 +26,12 @@ export default {
 
     const fetchItems = async () => {
       try {
+        console.log("Отправляю запрос на получение сделок...");
         const response = await fetchDeals();
-        if (response._embedded && response._embedded.leads) {
+
+        console.log("Ответ от API:", response);
+
+        if (response && response._embedded && response._embedded.leads) {
           deals.value = response._embedded.leads;
           console.log("Сделки:", deals.value);
         } else {
