@@ -1,6 +1,6 @@
 import tokenService from '@/services/tokenService';
 
-const baseUrl = '/api';
+const baseUrl = 'https://bkmzenbkmzen.amocrm.ru/api';
 
 async function fetchData(endpoint, options = {}) {
   const accessToken = await tokenService.ensureTokenIsValid();

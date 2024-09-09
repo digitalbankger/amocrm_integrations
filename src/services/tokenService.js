@@ -1,11 +1,13 @@
 const tokenService = {
     client_id: 'a5a49978-60b4-45e5-9fac-8af6887d9602',
     client_secret: '1pWapg0P0mww8j08HCOo4nMpsgg69WGFB36UppRUY8J5lsCAveSFS0UTxatFTt8X',
-    refresh_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImIwNDQyMDI0MTExNGIyY2EwYzQzYmJmYTRkY2RhNWZkNjcxNGU0MTMxNzE3ZjMyYzliN2U5MTA5OWVhYTg2MmQxZTlkM2FhZTQ3NjJkNTkzIn0.eyJhdWQiOiJhNWE0OTk3OC02MGI0LTQ1ZTUtOWZhYy04YWY2ODg3ZDk2MDIiLCJqdGkiOiJiMDQ0MjAyNDExMTRiMmNhMGM0M2JiZmE0ZGNkYTVmZDY3MTRlNDEzMTcxN2YzMmM5YjdlOTEwOTllYWE4NjJkMWU5ZDNhYWU0NzYyZDU5MyIsImlhdCI6MTcyNTg3NTQ2NiwibmJmIjoxNzI1ODc1NDY2LCJleHAiOjE3MjYwMTI4MDAsInN1YiI6IjExNDkyNDU4IiwiZ3JhbnRfdHlwZSI6IiIsImFjY291bnRfaWQiOjMxOTM5ODk0LCJiYXNlX2RvbWFpbiI6ImFtb2NybS5ydSIsInZlcnNpb24iOjIsInNjb3BlcyI6WyJjcm0iLCJmaWxlcyIsImZpbGVzX2RlbGV0ZSIsIm5vdGlmaWNhdGlvbnMiLCJwdXNoX25vdGlmaWNhdGlvbnMiXSwiaGFzaF91dWlkIjoiMTI1ZmQ5ZmYtNTc1Mi00YWQxLWIxMDctYTJiZjlmZTIxMmRlIiwiYXBpX2RvbWFpbiI6ImFwaS1iLmFtb2NybS5ydSJ9.SklgTC8VS1OkpBIJSZvyB6ttTVMkxfQYxrNqyOvbqMOirMZOevxgq_yBzwOVfZ-154t4q6dbVL1WKrERw2decj50B7isILygmm0Md3H_rYY5vC2jlPgMBM3ZSdAKBLo4WwpSFT54lTwnbraNte8tcwC-2J4GYYdLN0KovQ7f7vZsV786G825CnBrNla-Q8tM4eQ_fgBHW9Tvi1YozSYRuuhEZQUS-5vnehTcU4ZEs2mtttIHMyCr70tUrGUf3KE1NySmSjCu77NMlswp4W-fw_m-9EALFCb4yy-EOk4uxf15camHJhMGq16ndNIjnR097wqpozaxicrk3ieCVW4wRA',
-    tokenInfo: null,
+    grant_type: 'authorization_code',
+    code: 'def50200b853b0d87ec84691ea1e4e27f9d4d94d2b3b8a7a2bbef15c7fddd4386df22cc70a4dae42c5c370e03c4d8df785b1132b12debce7235d7973d0d5b62717f8851fb8f5cd89626aab90ce23da751c2fc24213ca7a7d931fd41998f34d670baa783324648ed677502c3886724221d4cd7578709172e63de25161bcf8be4d2650026a016b91f1bc2e3991fa713ebf22ff817890bbdb69d84c530b127c5fef2c4baf8f598c58eb71f35ed3578eafdbf3804dc2e7d518086b0ea4d2cfa6d3847a15d47f6687b46a0ef8853a80c61cc688262504473777245ea1f165000d4c45776176beb2c20c2bc5ce3a00191f08ea0acd1244c3baee5cd2325315e5c089ad0261cfb45188ce6cff88c13dd9cff186775881470de0213cca98ea5423e9fd931f8d1bb6a97bd8acb5b5832786a3788119614f3fe742a698d647d0b21d617aaa6fc000046caf21279f32602f8b0fcd2388c96e9e21572ce6fa94d916aab05b7af04970492f4de991e6773f690b4fbbc469e27aabf52f8caebebc373d2fcc69e68d2042031944d6ac0bd1fd705b64c6e8a71a65932434f4d1b4c649cccedbdc70c85cd741266123aff9641ddefc712a330784375bb192bf98d555622a9b87f47e3379715851c16a1a5d7c826df871bf375009f1c236632ed58d4f0e88c6d748eaceeef0555acda10f0fa847b637b877d14dfa66db96727e9185dbcb75e16ecb43a8a22a8663385017a127e7',
+    redirect_uri: 'https://digitalbankger.github.io/amocrm_integrations/#/',
+
   
     async fetchAccessToken() {
-      const response = await fetch('/api/oauth2/access_token', {
+      const response = await fetch('https://bkmzenbkmzen.amocrm.ru/oauth2/access_token', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -14,7 +16,7 @@ const tokenService = {
           client_id: this.client_id,
           client_secret: this.client_secret,
           grant_type: 'refresh_token',
-          redirect_url: "",
+          redirect_url: "https://digitalbankger.github.io/amocrm_integrations/#/",
           refresh_token: this.refresh_token,
         }),
       });
