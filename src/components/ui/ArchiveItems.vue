@@ -17,18 +17,26 @@
 
 <script>
 import { ref, onMounted } from 'vue';
-
+import { useApi } from '@/services/api/api.js'; 
 export default {
   setup() {
     const deals = ref([]);
 
     const fetchItems = async () => {
-      deals.value = [
-        { id: 1, name: "Тестовая сделка 1", price: 1000 },
-        { id: 2, name: "Тестовая сделка 2", price: 2000 },
-        { id: 3, name: "Тестовая сделка 3", price: 3000 }
-      ];
-      console.log("Сделки:", deals.value); 
+      try {
+        console.log("Отправляю запрос на получение сделок...");
+        const response = await fetchDeals();
+        console.log("Ответ от API:", response);
+
+        if (response && response._embedded && response._embedded.leads) {
+          deals.value = response._embedded.leads;  
+          console.log("Сделки после присваивания:", deals.value);
+        } else {
+          console.error("Сделки не найдены в ответе API");
+        }
+      } catch (error) {
+        console.error('Ошибка загрузки сделок:', error);
+      }
     };
 
     onMounted(fetchItems);
