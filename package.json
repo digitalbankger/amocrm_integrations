@@ -1,0 +1,58 @@
+{
+  "name": "my-vue-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@raiffeisen-ecom/payment-sdk": "^1.1.45",
+    "@vueuse/core": "^10.4.1",
+    "axios": "^1.5.0",
+    "core-js": "^3.8.3",
+    "date-fns": "^2.30.0",
+    "lightbox2": "^2.11.4",
+    "quagga": "^0.12.1",
+    "router": "^1.3.8",
+    "v-click-outside": "^3.2.0",
+    "vee-validate": "^4.11.1",
+    "vue": "^3.2.13",
+    "vue-router": "^4.0.13",
+    "vue3-apexcharts": "^1.4.4",
+    "vuetify": "^3.3.15",
+    "vuex": "^4.1.0",
+    "yup": "^1.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^9.17.0",
+    "typescript": "^5.2.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}
