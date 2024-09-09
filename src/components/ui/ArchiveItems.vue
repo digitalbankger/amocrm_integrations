@@ -16,12 +16,12 @@
 </template>
 
 <script>
-import { ref, onMounted, nextTick } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useApi } from '@/services/api/api.js'; 
 
 export default {
   setup() {
-    const deals = ref([]);
+    const deals = ref([]); // Создаем реактивную переменную для хранения сделок
 
     const fetchItems = async () => {
       try {
@@ -31,11 +31,8 @@ export default {
         console.log("Полный ответ от API:", response);
 
         if (response && response._embedded && response._embedded.leads) {
-          deals.value = response._embedded.leads; 
+          deals.value = response._embedded.leads;
           console.log("Сделки после присваивания:", deals.value);
-
-          await nextTick(); 
-          console.log("Компонент обновлен после nextTick.");
         } else {
           console.error("Сделки не найдены в ответе API или структура ответа изменилась.");
         }
@@ -44,7 +41,7 @@ export default {
       }
     };
 
-    onMounted(fetchItems);
+    onMounted(fetchItems); // Вызов функции загрузки данных при монтировании компонента
 
     return {
       deals
