@@ -16,7 +16,7 @@ const tokenService = {
         body: JSON.stringify({
           client_id: this.client_id,
           client_secret: this.client_secret,
-          grant_type: 'refresh_token',
+          grant_type: 'authorization_code',
           code: this.code,
           redirect_uri: "https://digitalbankger.github.io/amocrm_integrations/#/",
         }),
