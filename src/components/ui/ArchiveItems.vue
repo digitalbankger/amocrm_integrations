@@ -25,7 +25,9 @@ export default {
 
     const fetchItems = async () => {
       try {
+        console.log("Отправляю запрос на получение сделок...");
         const response = await fetchDeals();
+        console.log("Ответ от API:", response);
         deals.value = response.data;
       } catch (error) {
         console.error('Ошибка загрузки сделок:', error);

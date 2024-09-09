@@ -28,7 +28,14 @@ async function fetchData(endpoint, options = {}) {
 
 // Получаю все сделки
 export function fetchDeals() {
-  return fetchData(`/v4/leads`);
+  return fetchData(`/v4/leads`)
+    .then(response => {
+      console.log('Ответ от API (сделки):', response); 
+      return response;
+    })
+    .catch(error => {
+      console.error('Ошибка при получении сделок:', error); 
+    });
 }
 
 // Получаю сделку по ID
