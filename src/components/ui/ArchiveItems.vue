@@ -21,6 +21,7 @@ import { useApi } from '@/services/api/api.js';
 export default {
   setup() {
     const deals = ref([]);
+    const { fetchDeals } = useApi();
 
     const fetchItems = async () => {
       try {
