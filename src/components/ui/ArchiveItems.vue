@@ -30,7 +30,7 @@ export default {
 
         console.log("Полный ответ от API:", response);
 
-        if (response && response._embedded && response._embedded.leads) {
+        if (response) {
           deals.value = response._embedded.leads;
           console.log("Сделки после присваивания:", deals.value);
         } else {
