@@ -3,7 +3,7 @@
     <h1 class="m-b-2">Сделки компании</h1>
 
     <div class="ads-list">
-      <div v-if="deals.length === 0">Нет доступных сделок</div> <!-- Сообщение, если сделок нет -->
+      <div v-if="deals.length === 0">Нет доступных сделок</div>
       <div v-for="deal in deals" :key="deal.id" class="ad-item">
         <img :src="'https://via.placeholder.com/150'" alt="Фото сделки" class="ad-photo" />
         <div class="ad-details">
@@ -17,37 +17,26 @@
 
 <script>
 import { ref, onMounted } from 'vue';
-import { useApi } from '@/services/api/api.js';
 
 export default {
   setup() {
     const deals = ref([]);
-    const { fetchDeals } = useApi();
 
     const fetchItems = async () => {
-      try {
-        console.log("Отправляю запрос на получение сделок...");
-        const response = await fetchDeals();
-
-        console.log("Ответ от API:", response);
-
-        if (response && response._embedded && response._embedded.leads) {
-          deals.value = response._embedded.leads;
-          console.log("Сделки:", deals.value);
-        } else {
-          console.error("Сделки не найдены в ответе API");
-        }
-      } catch (error) {
-        console.error('Ошибка загрузки сделок:', error);
-      }
+      deals.value = [
+        { id: 1, name: "Тестовая сделка 1", price: 1000 },
+        { id: 2, name: "Тестовая сделка 2", price: 2000 },
+        { id: 3, name: "Тестовая сделка 3", price: 3000 }
+      ];
+      console.log("Сделки:", deals.value); 
     };
 
-    onMounted(fetchItems); 
+    onMounted(fetchItems);
 
     return {
-      deals, 
+      deals
     };
-  },
+  }
 };
 </script>
 
