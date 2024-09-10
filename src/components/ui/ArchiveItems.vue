@@ -17,37 +17,48 @@
 
 <script>
 import { ref, onMounted } from 'vue';
-import { useApi } from '@/services/api/api.js'; 
+import { useApi } from '@/services/api/api.js';
 
 export default {
   setup() {
-    const deals = ref([]); // Создаем реактивную переменную для хранения сделок
+    const deals = ref([]);
 
     const fetchItems = async () => {
       try {
-        console.log("Отправляю запрос на получение сделок...");
-        const response = await useApi().fetchDeals();
-
-        console.log("Полный ответ от API:", response);
-
-        if (response) {
-          deals.value = response._embedded.leads;
-          console.log("Сделки после присваивания:", deals.value);
+        // Проверяем, есть ли данные в localStorage
+        const cachedDeals = localStorage.getItem('cachedDeals');
+        if (cachedDeals) {
+          // Если данные есть, загружаем их из кэша
+          deals.value = JSON.parse(cachedDeals);
+          console.log('Загружаем сделки из кэша:', deals.value);
         } else {
-          console.error("Сделки не найдены в ответе API или структура ответа изменилась.");
+          // Если данных нет в кэше, делаем запрос к API
+          console.log("Отправляю запрос на получение сделок...");
+          const response = await useApi().fetchDeals();
+
+          if (response && response._embedded && Array.isArray(response._embedded.leads)) {
+            deals.value = response._embedded.leads;
+            console.log("Сделки после присваивания:", deals.value);
+
+            // Кэшируем полученные данные в localStorage
+            localStorage.setItem('cachedDeals', JSON.stringify(deals.value));
+          } else {
+            console.error("Сделки не найдены в ответе API или структура ответа изменилась.");
+          }
         }
       } catch (error) {
         console.error('Ошибка загрузки сделок:', error);
       }
     };
 
-    onMounted(fetchItems); // Вызов функции загрузки данных при монтировании компонента
+    onMounted(fetchItems);
 
     return {
       deals
     };
   }
 };
+
 </script>
 
 <style scoped>
